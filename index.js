@@ -26,11 +26,7 @@
     }
 
     entry.contents.forEach(contentEntry => {
-      if (contentEntry.type === 'directory') {
-        directory.appendChild(createDirectory(contentEntry));
-      } else if (contentEntry.type === 'file') {
-        directory.appendChild(createBook(contentEntry));
-      }
+      createEntry(directory, contentEntry)
     })
 
     return directory;
@@ -49,51 +45,15 @@
 
   const itensContainer = document.querySelector(".itens-container")
 
-  dataJson.forEach(entry => {
+  function createEntry(parent, entry) {
     if (entry.type === 'directory') {
-      itensContainer.appendChild(createDirectory(entry));
+      parent.appendChild(createDirectory(entry));
     } else if (entry.type === 'file') {
-      createBook(entry);
+      parent.appendChild(createBook(entry));
     }
-    // const itemHeader = document.createElement("header");
-    // itemHeader.appendChild(document.createTextNode(entry.title))
+  }
 
-    // const detailsSection = document.createElement("section");
-
-    // entry.pictures.forEach(picture => {
-    //   const itemPicture = document.createElement("img");
-    //   itemPicture.src = picture;
-    //   itemPicture.addEventListener("click", function(e) {
-    //     itemPicture.classList.toggle("zoomed");
-    //     e.stopPropagation();
-    //   })
-    //   detailsSection.appendChild(itemPicture);
-    // })
-
-
-    // const textDetails = document.createElement("div");
-
-    // const itemDescription = document.createElement("summary");
-    // itemDescription.appendChild(document.createTextNode(entry.description))
-    // textDetails.appendChild(itemDescription);
-
-    // if (entry.availability) {
-    //   const availabilityItem = document.createElement("summary");
-    //   availabilityItem.classList.add("availability");
-    //   availabilityItem.appendChild(document.createTextNode(entry.availability))
-    //   textDetails.appendChild(availabilityItem);
-    // }
-
-    // const itemPrice = document.createElement("footer");
-    // itemPrice.appendChild(document.createTextNode(entry.price))
-    // textDetails.appendChild(itemPrice);
-
-    // detailsSection.appendChild(textDetails);
-
-    // const itemSection = document.createElement("article");
-    // itemSection.appendChild(itemHeader)
-    // itemSection.appendChild(detailsSection)
-
-    // itensContainer.appendChild(itemSection);
+  dataJson.forEach(entry => {
+    createEntry(itensContainer, entry)
   });
 })();
