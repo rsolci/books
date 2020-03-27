@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 0;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+details {
+  padding: 0 10px;
+}
+
+details>summary:before {
+  content: '\01F4C1';
+  transition: 0.2s;
+}
+details[open]>summary:before {
+  content: '\01F4C2';
+  transition: 0.2s;
+}
+.book-entry {
+  padding-left: 10px;
+}

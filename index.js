@@ -38,7 +38,8 @@
 
   const createBook = (entry) => {
     const bookEntry = document.createElement("p");
-    bookEntry.appendChild(document.createTextNode(entry.name))
+    bookEntry.classList.add('book-entry')
+    bookEntry.appendChild(document.createTextNode(`📖 ${entry.name}`))
 
     return bookEntry;
   }
